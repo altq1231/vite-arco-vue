@@ -5,20 +5,20 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [{ find: '@', replacement: '/src' }],
+    alias: [{ find: '@', replacement: '/src' }]
   },
   plugins: [vue(), vueJsx()],
   css: {
     preprocessorOptions: {
       less: {
-        javascriptEnabled: true,
-      },
-    },
+        javascriptEnabled: true
+      }
+    }
   },
   define: {
-    'process.env': {},
+    'process.env': {}
   },
   server: {
-    port: 3300,
-  },
+    port: 3300
+  }
 });
