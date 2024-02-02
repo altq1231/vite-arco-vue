@@ -5,6 +5,7 @@ import { Message } from '@arco-design/web-vue';
 export default function useLocale() {
   const i18 = useI18n();
   const currentLocale = computed(() => {
+    localStorage.setItem('locale', i18.locale.value);
     return i18.locale.value;
   });
   const changeLocale = (value: string) => {
@@ -17,6 +18,6 @@ export default function useLocale() {
   };
   return {
     currentLocale,
-    changeLocale,
+    changeLocale
   };
 }
