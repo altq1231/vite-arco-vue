@@ -42,11 +42,11 @@ import LoginForm from './components/login-form.vue';
 .login-page {
   width: 100%;
   .left-side {
-    flex: 0 0 400px;
-    width: 400px;
+    flex: 0 0 520px;
+    width: 520px;
 
     .login-banner {
-      width: 400px;
+      width: 520px;
       height: 100%;
       background-size: cover;
       background-position: 50%;
