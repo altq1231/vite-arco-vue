@@ -1,4 +1,4 @@
-<template>dashboard</template>
+<template><div>dashboard</div></template>
 
 <script setup></script>
 

@@ -5,6 +5,7 @@ import '@arco-design/web-vue/dist/arco.css';
 import store from './store';
 import i18n from './locale';
 import router from './router';
+import './mock';
 import App from './App.vue';
 import '@/style/index.less';
 

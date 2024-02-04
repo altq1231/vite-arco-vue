@@ -1,4 +1,4 @@
-<template>not found</template>
+<template><div>not found</div></template>
 
 <script setup></script>
 
