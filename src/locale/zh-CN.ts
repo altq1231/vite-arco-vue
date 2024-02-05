@@ -29,6 +29,10 @@ import localeLogin from '@/views/login/locale/zh-CN';
 import localeSettings from './zh-CN/settings';
 
 export default {
+  'app.name': '管理后台',
+  'app.description': '管理后台系统模板',
+  'app.footer': '© 2023 Created by',
+  'app.footer.company': 'Altq',
   'menu.dashboard': '仪表盘',
   'menu.server.dashboard': '仪表盘-服务端',
   'menu.server.workplace': '工作台-服务端',

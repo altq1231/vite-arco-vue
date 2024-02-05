@@ -29,6 +29,10 @@ import localeLogin from '@/views/login/locale/en-US';
 import localeSettings from './en-US/settings';
 
 export default {
+  'app.name': 'Management backend',
+  'app.description': 'Manage backend system templates',
+  'app.footer': ' © 2023 Created by',
+  'app.footer.company': 'Altq',
   'menu.dashboard': 'Dashboard',
   'menu.server.dashboard': 'Dashboard-Server',
   'menu.server.workplace': 'Workplace-Server',

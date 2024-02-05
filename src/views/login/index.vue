@@ -8,34 +8,52 @@
         <div class="header-container flex-row">
           <div class="logo-content flex-row">
             <img class="logo" :src="bannerImage" />
-            管理后台
+            {{ $t('app.name') }}
           </div>
           <nav class="nav-menu flex-row">
             <div class="menu-item">
-              <router-link to="/">用户协议</router-link>
+              <router-link to="/">
+                {{ $t('login.page.userAgreement') }}
+              </router-link>
             </div>
             <div class="menu-item">
-              <router-link to="/">隐私政策</router-link>
+              <router-link to="/">
+                {{ $t('login.page.privacyPolicy') }}
+              </router-link>
             </div>
             <div class="menu-item">
-              <router-link to="/">帮助中心</router-link>
+              <router-link to="/">
+                {{ $t('login.page.helpCenter') }}
+              </router-link>
             </div>
           </nav>
         </div>
       </div>
       <div class="content-container flex-row fill-flex">
         <div class="login-card">
-          <LoginForm />
+          <transition name="slide-fade">
+            <Register v-model:showForm="showForm" v-if="showForm === 'register'" />
+            <ForgotPassword v-model:showForm="showForm" v-else-if="showForm === 'forgot-password'" />
+            <LoginForm v-model:showForm="showForm" v-else />
+          </transition>
         </div>
       </div>
-      <div class="foot-copyright">hh home ©2022 Created by Altq</div>
+      <GlobalFooter />
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import bannerImage from '/logo.svg';
 import LoginForm from './components/login-form.vue';
+import GlobalFooter from '../../components/global-footer/index.vue';
+import Register from './components/register.vue';
+import ForgotPassword from './components/forgot-password.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+const showForm = ref('login');
 </script>
 
 <style lang="less" scoped>
@@ -56,20 +74,7 @@ import LoginForm from './components/login-form.vue';
 
   .login-content {
     height: 100%;
-    position: relative;
-    padding-bottom: 40px;
     min-height: 100vh;
-    .foot-copyright {
-      position: absolute;
-      padding: 0 20px;
-      font-size: 12px;
-      color: #999999;
-      line-height: 18px;
-      text-align: center;
-      left: 0;
-      right: 0;
-      bottom: 20px;
-    }
 
     .top-header {
       flex: 0 0 65px;
@@ -90,7 +95,7 @@ import LoginForm from './components/login-form.vue';
 
           .logo {
             height: 40px;
-            margin-right: 20px;
+            margin-right: 15px;
 
             svg {
               height: 100%;
@@ -132,124 +137,13 @@ import LoginForm from './components/login-form.vue';
     .content-container {
       align-items: center;
       justify-content: center;
-      padding-top: 30px;
 
       .login-card {
-        padding: 40px 45px;
         overflow: hidden;
+        padding: 30px 40px;
+        width: 400px;
+        height: 348px;
         position: relative;
-        min-width: 450px;
-        margin: 0 auto 80px;
-
-        .form-content {
-          padding: 20px 0 0;
-
-          :deep(.ant-form-item) {
-            margin-bottom: 30px;
-          }
-
-          :deep(.ant-form-item-with-help) {
-            margin-bottom: 6px;
-          }
-
-          .input-item {
-            .form-input.ant-input.password-input {
-              padding-right: 60px;
-            }
-            .password-icon {
-              position: absolute;
-              right: 0;
-              top: 0;
-              height: 60px;
-              width: 60px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 20px;
-              color: rgba(0, 0, 0, 0.25);
-              cursor: pointer;
-              user-select: none;
-
-              &:hover {
-                color: rgba(0, 0, 0, 0.45);
-              }
-            }
-          }
-
-          .login-btn {
-            height: 60px;
-            margin-top: 30px;
-            margin-bottom: 16px;
-            width: 100%;
-            font-size: 20px;
-            line-height: 50px;
-
-            &:disabled {
-              color: #ffffff;
-              background-color: #6aadfd;
-              border-color: #6aadfd;
-              cursor: initial;
-            }
-          }
-
-          .form-actions {
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 14px;
-
-            .forget,
-            .code-login {
-              font-size: 17px;
-              height: 26px;
-              line-height: 26px;
-              color: rgb(var(--primary-6));
-              cursor: pointer;
-              transition: color 0.3s;
-
-              &:hover {
-                color: #2e8dff;
-              }
-            }
-          }
-        }
-
-        .other-login {
-          .login-title {
-            flex: 0 0 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            font-size: 17px;
-            font-weight: 400;
-            color: #aaaaaa;
-            text-align: center;
-          }
-
-          .other-login-content {
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-
-            .login-item {
-              margin: 0 12px;
-              flex: 0 0 46px;
-              width: 46px;
-              height: 46px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              a {
-                font-size: 46px;
-                width: 46px;
-                height: 46px;
-                overflow: hidden;
-                border-radius: 23px;
-                line-height: 1;
-              }
-            }
-          }
-        }
       }
     }
   }

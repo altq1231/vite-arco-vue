@@ -1,7 +1,6 @@
 <template>
   <div class="login-form-wrapper">
-    <div class="login-form-title">{{ $t('login.form.title') }}</div>
-    <div class="login-form-sub-title">{{ $t('login.form.title') }}</div>
+    <div class="login-form-title">{{ $t('login.form.title') }}{{ $t('app.name') }}</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <a-form ref="loginForm" :model="userInfo" class="login-form" layout="vertical" @submit="handleSubmit">
       <a-form-item
@@ -34,12 +33,12 @@
             @change="setRememberPassword as any">
             {{ $t('login.form.rememberPassword') }}
           </a-checkbox>
-          <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
+          <a-link @click="handleChangeShowForm('forgot-password')">{{ $t('login.form.forgetPassword') }}</a-link>
         </div>
         <a-button type="primary" html-type="submit" long :loading="loading">
           {{ $t('login.form.login') }}
         </a-button>
-        <a-button type="text" long class="login-form-register-btn">
+        <a-button type="text" long class="login-form-register-btn" @click="handleChangeShowForm('register')">
           {{ $t('login.form.register') }}
         </a-button>
       </a-space>
@@ -73,6 +72,19 @@ const userInfo = reactive({
   username: loginConfig.value.username,
   password: loginConfig.value.password
 });
+
+const props = defineProps({
+  showForm: {
+    type: String,
+    required: true
+  }
+});
+
+const emits = defineEmits(['update:showForm']);
+
+const handleChangeShowForm = (form: string) => {
+  emits('update:showForm', form);
+};
 
 const handleSubmit = async ({
   errors,
@@ -119,6 +131,7 @@ const setRememberPassword = (value: boolean) => {
 .login-form {
   &-wrapper {
     width: 320px;
+    height: 288px;
   }
 
   &-title {
