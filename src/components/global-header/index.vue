@@ -45,6 +45,48 @@
           </a-button>
         </a-tooltip>
       </li>
+
+      <li>
+        <a-dropdown trigger="click">
+          <a-avatar :size="32" :style="{ marginRight: '8px', cursor: 'pointer' }">
+            <img alt="avatar" :src="avatar" />
+          </a-avatar>
+          <template #content>
+            <a-doption>
+              <a-space @click="switchRoles">
+                <icon-tag />
+                <span>
+                  {{ $t('messageBox.switchRoles') }}
+                </span>
+              </a-space>
+            </a-doption>
+            <a-doption>
+              <a-space @click="$router.push({ name: 'Info' })">
+                <icon-user />
+                <span>
+                  {{ $t('messageBox.userCenter') }}
+                </span>
+              </a-space>
+            </a-doption>
+            <a-doption>
+              <a-space @click="$router.push({ name: 'Setting' })">
+                <icon-settings />
+                <span>
+                  {{ $t('messageBox.userSettings') }}
+                </span>
+              </a-space>
+            </a-doption>
+            <a-doption>
+              <a-space @click="handleLogout">
+                <icon-export />
+                <span>
+                  {{ $t('messageBox.logout') }}
+                </span>
+              </a-space>
+            </a-doption>
+          </template>
+        </a-dropdown>
+      </li>
     </ul>
   </div>
 </template>
@@ -56,11 +98,12 @@ import { useDark, useToggle, useFullscreen } from '@vueuse/core';
 import { useAppStore, useUserStore } from '@/store';
 import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
-// import useUser from '@/hooks/user';
+import useUser from '@/hooks/user';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 const { changeLocale, currentLocale } = useLocale();
+const { logout } = useUser();
 const locales = [...LOCALE_OPTIONS];
 const appStore = useAppStore();
 const userStore = useUserStore();
@@ -93,6 +136,15 @@ const setDropDownVisible = () => {
 const toggleTheme = useToggle(isDark);
 const handleToggleTheme = () => {
   toggleTheme();
+};
+
+const switchRoles = async () => {
+  const res = await userStore.switchRoles();
+  Message.success(res);
+};
+
+const handleLogout = () => {
+  logout();
 };
 </script>
 <style scoped lang="less">
