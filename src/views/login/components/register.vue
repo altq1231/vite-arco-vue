@@ -6,7 +6,6 @@
       ref="registerFormRef"
       :model="registerInfo"
       :rules="registerRules"
-      class="register-form"
       layout="vertical"
       @submit="handleSubmit">
       <a-form-item field="username" :label="$t('register.form.userName.label')" :validate-trigger="['change', 'blur']">
@@ -98,7 +97,6 @@ const registerInfo = reactive({
 });
 
 const disabledCaptcha = computed(() => {
-  console.log(!registerInfo.userEmail);
   let temp = true;
   if (registerInfo.userEmail) {
     temp = false;
