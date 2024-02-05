@@ -1,10 +1,5 @@
 import { defineStore } from 'pinia';
-import {
-  login as userLogin,
-  logout as userLogout,
-  getUserInfo,
-  LoginData,
-} from '@/service/user';
+import { login as userLogin, logout as userLogout, getUserInfo, LoginData } from '@/service/user';
 import { setToken, clearToken } from '@/utils/auth';
 import { removeRouteListener } from '@/utils/route-listener';
 import { UserState } from './types';
@@ -27,13 +22,13 @@ const useUserStore = defineStore('user', {
     registrationDate: undefined,
     accountId: undefined,
     certification: undefined,
-    role: '',
+    role: ''
   }),
 
   getters: {
     userInfo(state: UserState): UserState {
       return { ...state };
-    },
+    }
   },
 
   actions: {
@@ -84,8 +79,8 @@ const useUserStore = defineStore('user', {
       } finally {
         this.logoutCallBack();
       }
-    },
-  },
+    }
+  }
 });
 
 export default useUserStore;
