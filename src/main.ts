@@ -8,6 +8,7 @@ import router from './router';
 import './mock';
 import App from './App.vue';
 import '@/style/index.less';
+import '@/service/interceptor';
 
 const app = createApp(App);
 app.use(ArcoVue, {});

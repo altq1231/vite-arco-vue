@@ -22,7 +22,6 @@ const handleChangeShowForm = (form: string) => {
 
 <style scoped lang="less">
 .forgot-password-form {
-  width: 320px;
-  height: 288px;
+  width: 340px;
 }
 </style>

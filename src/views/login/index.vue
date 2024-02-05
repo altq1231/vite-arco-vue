@@ -139,11 +139,13 @@ const showForm = ref('login');
       justify-content: center;
 
       .login-card {
-        overflow: hidden;
         padding: 30px 40px;
-        width: 400px;
-        height: 348px;
+        width: 420px;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

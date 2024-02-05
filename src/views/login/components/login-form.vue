@@ -114,8 +114,6 @@ const handleSubmit = async ({
       loginConfig.value.username = rememberPassword ? username : '';
       loginConfig.value.password = rememberPassword ? password : '';
     } catch (err) {
-      console.log(11111, (err as Error).message);
-
       errorMessage.value = (err as Error).message;
     } finally {
       setLoading(false);
@@ -130,8 +128,7 @@ const setRememberPassword = (value: boolean) => {
 <style lang="less" scoped>
 .login-form {
   &-wrapper {
-    width: 320px;
-    height: 288px;
+    width: 340px;
   }
 
   &-title {

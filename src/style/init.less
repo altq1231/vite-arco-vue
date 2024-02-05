@@ -195,3 +195,15 @@ i {
 .flex-auto(@auto: auto) {
   flex: @auto;
 }
+
+input[type="password"]::-webkit-credentials-cramble-button{
+  appearance: none;
+}
+
+input[type="password"]::-ms-reveal{
+  display: none;
+}
+
+input[type="password"]::-ms-clear{
+  display: none;
+}

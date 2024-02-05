@@ -124,29 +124,30 @@ body,
 /* 设置持续时间和动画函数        */
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
   position: absolute;
-  top: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 40px;
 }
 
 .slide-fade-enter-from {
-  transform: translateX(10px);
+  transform: translateY(-50%) translateX(15px);
   opacity: 0;
 }
 
 .slide-fade-enter-to {
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
   opacity: 1;
 }
 
 .slide-fade-leave-from {
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
   opacity: 1;
 }
 
 .slide-fade-leave-to {
-  transform: translateX(-10px);
+  transform: translateY(-50%) translateX(-15px);
   opacity: 0;
 }
 
