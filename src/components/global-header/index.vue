@@ -61,7 +61,7 @@
               </a-space>
             </a-doption>
             <a-doption>
-              <a-space @click="$router.push({ name: 'Info' })">
+              <a-space @click="handleGoTo('/user/user-center')">
                 <icon-user />
                 <span>
                   {{ $t('messageBox.userCenter') }}
@@ -69,7 +69,7 @@
               </a-space>
             </a-doption>
             <a-doption>
-              <a-space @click="$router.push({ name: 'Setting' })">
+              <a-space @click="handleGoTo('/user/setting')">
                 <icon-settings />
                 <span>
                   {{ $t('messageBox.userSettings') }}
@@ -100,8 +100,10 @@ import { LOCALE_OPTIONS } from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 const { t } = useI18n();
+const router = useRouter();
 const { changeLocale, currentLocale } = useLocale();
 const { logout } = useUser();
 const locales = [...LOCALE_OPTIONS];
@@ -145,6 +147,10 @@ const switchRoles = async () => {
 
 const handleLogout = () => {
   logout();
+};
+
+const handleGoTo = (path) => {
+  router.push(path);
 };
 </script>
 <style scoped lang="less">
