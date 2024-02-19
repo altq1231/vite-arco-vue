@@ -142,6 +142,8 @@ const handleToggleTheme = () => {
 
 const switchRoles = async () => {
   const res = await userStore.switchRoles();
+
+  localStorage.setItem('userRole', res);
   Message.success(res);
 };
 
